@@ -14,6 +14,9 @@ function performStartTransition() {
 
 <template>
   <div :class="{'rounded-box': true, 'zoom-animation': zoomTransitionFlag}" @click="performStartTransition()">
+    <NuxtLink to="/game-view">
+      gameeeeeeeeeee
+    </NuxtLink>
   </div>
 </template>
 

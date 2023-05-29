@@ -1,7 +1,8 @@
 
 <script setup>
-  import titleView from "./views/title-view.vue"; 
-  import mainContentView from "./views/main-content-view.vue"; 
+  import titleView from "~/views/title-view.vue"; 
+  import mainContentView from "~/views/main-content-view.vue"; 
+  import footerActionView from "~/views/footer-action-view.vue"; 
 
   const zoomTransitionFlag = ref(false);
 
@@ -14,6 +15,7 @@
 <template>
     <title-view :receivedZoomTransition="zoomTransitionFlag"></title-view>
     <main-content-view @emmited-zoom-transition="onReceivingTransition()"></main-content-view>
+    <footer-action-view :receivedZoomTransition="zoomTransitionFlag"></footer-action-view>
 </template>
 
 <style>
