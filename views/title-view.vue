@@ -2,17 +2,19 @@
 <script setup>
 import config from '@/src/config.js';
 
-defineProps(['receivedZoomTransition']);
+const props = defineProps(['receivedZoomTransition', 'recievedWordNormal', 'recievedWordFinal']);
 
-const wordFinal = ref(["C", "H", "R", "O", "T", "O"])
-const wordNormal = ref(["C", "H", "R", "O", "T", "O"])
+var wordFinal = props.recievedWordFinal;
+var wordNormal = props.recievedWordNormal;
 const wordFlipped = ref(["𑀲𑀻", "𑀏𑀘", "𑀆𑀭", "𑀑", "𑀝𑀻", "𑀑"])
 const randomNum = ref(0)
 const animated = ref([false, false, false, false, false, false]);
 // setTimeout works asynchronously!!
 function createTitle() {
+  console.log(wordFinal);
+  console.log(wordFlipped);
   randomNum.value = Math.round(Math.random() * 5);
-  wordFinal.value[randomNum.value] = wordFlipped.value[randomNum.value];
+  wordFinal[randomNum.value] = wordFlipped.value[randomNum.value];
   flipAnimation(randomNum);
   setTimeout(() => { 
     resetValue(wordFinal, randomNum, wordNormal);
@@ -29,7 +31,7 @@ function flipAnimation(randomNum){
 
 function resetValue(wordFinal, randomNum, wordNormal) {
   flipAnimation(randomNum);
-  wordFinal.value[randomNum.value] = wordNormal.value[randomNum.value];
+  wordFinal[randomNum.value] = wordNormal[randomNum.value];
 }
 
 onMounted( () => {
@@ -61,18 +63,19 @@ onMounted( () => {
     100% {transform: rotateX(0);}
   }
   .title_div{
+    background-color: #050505;
     text-align: center;
     font-family: "Orbitron", "NotoSansBrahmi";
-    font-size: 40px;
+    font-size: 3vw;
     font-weight: 600;
-    letter-spacing: 10px;
     height: 100px;
   }
   .title_letter{
-    padding-left: 50px;
-    padding-right: 50px;
+    color: #999993;
+    padding-left: 5vw;
+    padding-right: 5vw;
     display: inline-block;
-    width: 50px;
+    width: 5vw;
     line-height: 100px;
     /* animation: flip 0.2s ease-in-out ; */
   }
